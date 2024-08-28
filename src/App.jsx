@@ -1,4 +1,4 @@
-import PortfolioCard from './components/PortfolioCard'
+import PortfolioCard from './Components/PortfolioCard'
 
 const data = [
   {
