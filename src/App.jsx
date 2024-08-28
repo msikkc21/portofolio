@@ -14,9 +14,9 @@ function App() {
   return (
     <div className='font-poppins max-w-screen-xl mx-auto'>
       {/* Navbar Start */}
-        <div className="flex justify-between px-5 border-b-4 border-slate-300">
+        <div className="flex justify-between pl-5 border-b-4 border-slate-300">
           <img src="assets/react.svg" alt="" className='w-10'/>
-          <div className='flex h-full justify-between mr-8'>
+          <div className='flex h-full justify-between md:mr-8'>
             <a href="#about" className='p-5 text-md font-medium hover:bg-slate-300 transition-all duration-200 ease-in-out'>About</a>
             <a href="#portfolio" className='p-5 text-md font-medium hover:bg-slate-300 transition-all duration-200 ease-in-out'>Portfolio</a>
             <a href="#skills" className='p-5 text-md font-medium hover:bg-slate-300 transition-all duration-200 ease-in-out'>Skills</a>
