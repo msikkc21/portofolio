@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="font-poppins w-full p-4 container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light flex justify-between">
         <img
-          src="../../public/assets/LogoMSI.png"
+          src="assets/LogoMSI.png"
           alt="Logo"
           className="w-14"
         />
