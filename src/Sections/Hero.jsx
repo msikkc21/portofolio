@@ -2,13 +2,13 @@ const Hero = () => {
   return (
     <section className="py-10 px-5 font-poppins h-[75vh] flex flex-wrap justify-between container">
       <div className="flex-none my-auto">
-        <h1 className="text-[#002D5E] font-bold text-lg md:text-xl">
-          Hello.. 👋<span className="text-black">, My Name</span>
+        <h1 className="text-[#002D5E] dark:text-[#57A8FF] font-bold text-lg md:text-xl">
+          Hello.. 👋<span className="text-black dark:text-white">, My Name</span>
         </h1>
-        <h2 className="text-black font-bold text-2xl md:text-3xl pt-2">
+        <h2 className="text-black dark:text-white font-bold text-2xl md:text-3xl pt-2">
           Muhammad Sulthonul Izza
         </h2>
-        <p className="font-bold text-slate-700 text-sm md:text-md pt-1 mb-6">
+        <p className="font-bold text-slate-700 dark:text-slate-300 text-sm md:text-md pt-1 mb-6">
           Informatics Engineering Student{" "}
           <span className="font-medium">& Front-End Developer</span>
         </p>

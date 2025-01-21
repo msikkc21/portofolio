@@ -1,6 +1,6 @@
 const Skills = () => {
     return (
-        <section id='skills' className='px-5 mb-72 container'>
+        <section id='skills' className='px-5 mb-52 container'>
         <h1 className='text-center text-4xl font-bold pt-10 pb-24'>My Skills</h1>
         <div className='grid gap-16 grid-cols-2 md:grid-cols-5 justify-center'>
           <img src="assets/html5.svg" alt="HTML" className='w-24 mx-auto hover:scale-125 transition-all duration-200 ease-in-out'/>

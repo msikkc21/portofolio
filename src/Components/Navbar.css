@@ -1,0 +1,18 @@
+.navbar-item:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #002D5E;
+    transition: all 0.3s;
+    left: 0;
+    bottom: 0;
+}
+
+.navbar-item:hover:after {
+    width: 105%;
+}
+
+#switch:checked ~ label div.circle-toggle {
+    @apply translate-x-4;
+}
