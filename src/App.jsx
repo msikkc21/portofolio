@@ -9,8 +9,6 @@ import Footer from './Sections/Footer'
 function App() {
 
   return (
-
-    
     <div className='font-poppins dark:bg-[#030E3B] dark:text-white transition-all duration-300 ease-in-out'>
       {/* Navbar Start */}
         <Navbar/>

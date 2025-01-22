@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-
+  
   const [darkMode, setDarkMode] = React.useState("light");
 
   React.useEffect(() => {
@@ -17,7 +17,6 @@ const Navbar = () => {
   const toggleDarkMode = () => {
     setDarkMode(darkMode === "light" ? "dark" : "light");
   };
-
   return (
     <div className="font-poppins w-full p-4 container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light flex justify-between">
@@ -65,7 +64,7 @@ const Navbar = () => {
                 className="hidden"
                 onClick={toggleDarkMode}
               />
-              <label for="switch">
+              <label htmlFor="switch">
                 <div className="w-10 h-6 bg-slate-500 rounded-full flex items-center p-1 cursor-pointer">
                   <div className="circle-toggle w-4 h-4 bg-white rounded-full shadow-md  transition-all duration-300 ease-in-out"></div>
                 </div>
@@ -161,9 +160,9 @@ const Navbar = () => {
                 <path
                   d="M20 12H10M20 5H4M20 19H4"
                   stroke={darkMode === "dark" ? "white" : "black"}
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             )}

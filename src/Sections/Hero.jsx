@@ -3,7 +3,8 @@ const Hero = () => {
     <section className="py-10 px-5 font-poppins h-[75vh] flex flex-wrap justify-between container">
       <div className="flex-none my-auto">
         <h1 className="text-[#002D5E] dark:text-[#57A8FF] font-bold text-lg md:text-xl">
-          Hello.. 👋<span className="text-black dark:text-white">, My Name</span>
+          Hello.. 👋
+          <span className="text-black dark:text-white">, My Name</span>
         </h1>
         <h2 className="text-black dark:text-white font-bold text-2xl md:text-3xl pt-2">
           Muhammad Sulthonul Izza
