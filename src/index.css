@@ -3,10 +3,312 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mencegah horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Transisi default untuk dark mode */
+html {
+  transition: color-scheme 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Transisi global untuk dark mode */
+*:not(.notransition) {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Transisi khusus untuk transform dan opacity */
+.transform-transition {
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Fix untuk mobile */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Fix untuk overflow pada elemen dengan konten yang panjang */
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+}
+
 .container {
   @apply max-w-screen-xl mx-auto px-4;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes staggeredFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hoverReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 10px 15px -3px rgba(0, 123, 255, 0.2), 0 4px 6px -2px rgba(0, 123, 255, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 15px 25px -5px rgba(0, 123, 255, 0.3), 0 10px 10px -5px rgba(0, 123, 255, 0.2);
+    transform: scale(1.02);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-staggered {
+  animation: staggeredFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Section transitions */
+section {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Portfolio card hover effects */
+.portfolio-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Portfolio button effects */
+section#portfolio a.group {
+  position: relative;
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 10px 15px -3px rgba(0, 123, 255, 0.15), 0 4px 6px -2px rgba(0, 123, 255, 0.1);
+}
+
+section#portfolio a.group:hover {
+  box-shadow: 0 15px 25px -5px rgba(0, 123, 255, 0.3), 0 10px 10px -5px rgba(0, 123, 255, 0.2);
+}
+
+section#portfolio a.group::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  border-radius: 0.5rem;
+}
+
+section#portfolio a.group:hover::before {
+  opacity: 1;
+}
+
+/* Section heading effects */
+section#portfolio h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.portfolio-image {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.portfolio-image img {
+  transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+.portfolio-card:hover .portfolio-image img {
+  transform: scale(1.1);
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Portfolio overlay effects */
+.portfolio-image .absolute {
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-image .transform {
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Tech tag hover effects */
+.tech-tag {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Role tag hover effects */
+span.inline-block.px-3.py-1.rounded-full {
+  transition: all 0.5s cubic-bezier(0.34, 0.7, 0.34, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+span.inline-block.px-3.py-1.rounded-full::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.7s ease;
+}
+
+span.inline-block.px-3.py-1.rounded-full:hover::before {
+  left: 100%;
+}
+
+/* Hero button effects */
+.hero-contact-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px -5px rgba(0, 123, 255, 0.3), 0 10px 10px -5px rgba(0, 123, 255, 0.2);
+}
+
+.hero-contact-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+  transition: all 0.8s ease;
+}
+
+.hero-contact-btn:hover::before {
+  left: 100%;
+}
+
+.hero-contact-btn .arrow-icon {
+  animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+.hero-portfolio-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-portfolio-btn:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.2), 0 4px 6px -2px rgba(255, 255, 255, 0.1);
+}
+
+.hero-portfolio-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.8s ease;
+}
+
+.hero-portfolio-btn:hover::before {
+  left: 100%;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Untuk menambahkan padding saat scroll ke elemen dengan ID agar tidak tertutup navbar */
 }

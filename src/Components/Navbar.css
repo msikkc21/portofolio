@@ -1,18 +1,43 @@
-.navbar-item:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 3px;
-    background: #002D5E;
-    transition: all 0.3s;
-    left: 0;
-    bottom: 0;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #007BFF;
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navbar-item:hover:after {
-    width: 105%;
+.dark .nav-link::after {
+  background-color: #007BFF;
 }
 
-#switch:checked ~ label div.circle-toggle {
-    @apply translate-x-4;
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Basic navbar styling */
+.navbar {
+  position: relative;
+  z-index: 50;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile menu styling */
+.navbar + div .absolute.right-0.top-0 {
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+  background-color: #001E43;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Mobile menu item hover effect */
+.navbar + div a:hover {
+  border-left: 4px solid #007BFF;
+}
+
+.mobile-menu {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
 }

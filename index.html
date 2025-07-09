@@ -5,9 +5,32 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
+    <!-- Prevent flash of incorrect theme -->
+    <script>
+      (function() {
+        // Mengatur dark mode secara instan saat halaman dimuat pertama kali
+        const savedTheme = localStorage.getItem('theme');
+        if (!savedTheme || savedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <style>
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Memastikan transisi tema mulus */
+      html {
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" style="overflow-x: hidden; width: 100%;"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
