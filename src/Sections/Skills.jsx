@@ -35,12 +35,17 @@ const Skills = () => {
     { name: "CSS3", icon: "assets/css3.svg" },
     { name: "JavaScript", icon: "assets/javascript.svg" },
     { name: "React", icon: "assets/react.svg" },
+    { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "Laravel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+    { name: "PHP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
     { name: "Python", icon: "assets/python.svg" },
+    { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
     { name: "C++", icon: "assets/C++.png" },
     { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
     { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
     { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-    { name: "TailwindCSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" },
+    { name: "TailwindCSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+    { name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
     { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
     { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
   ];
@@ -58,7 +63,7 @@ const Skills = () => {
         </div>
 
         {/* Primary Skills with Progress Bars */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {skillCategories.map((category, index) => (
             <div key={index} className="bg-white dark:bg-[#001A3A] rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-700 transform hover:-translate-y-1 hover:scale-[1.01]" style={{transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1.4)'}}>
               <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-900 p-5">
@@ -91,11 +96,11 @@ const Skills = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
         
         {/* Technology Grid */}
         <div className="bg-white dark:bg-[#001A3A] rounded-xl shadow-lg p-8 mb-8 transition-all duration-700 hover:shadow-xl" style={{transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1.4)'}}>
-          <h3 className="text-2xl font-bold mb-10 text-center">Technologies I Work With</h3>
+          {/* <h3 className="text-2xl font-bold mb-10 text-center">Technologies I Work With</h3> */}
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
             {technologies.map((tech, index) => (
               <div key={index} className="flex flex-col items-center group">

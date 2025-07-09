@@ -67,13 +67,13 @@ function App() {
       {/* Skills Section End */}
       
       {/* Certificates Section Start */}
-      <div className='bg-gray-100 dark:bg-[#001A3A] animate-slideUp' style={{animationDelay: '500ms'}}>
+      {/* <div className='bg-gray-100 dark:bg-[#001A3A] animate-slideUp' style={{animationDelay: '500ms'}}>
         <Certificates id='certificates'/>
-      </div>
+      </div> */}
       {/* Certificates Section End */}
       
       {/* Contact Section Start */}
-      <div className="animate-slideUp" style={{animationDelay: '600ms'}}>
+      <div className="bg-gray-100 dark:bg-[#001A3A] animate-slideUp" style={{animationDelay: '500ms'}}>
         <Contact id='contact'/>
       </div>
       {/* Contact Section End */}

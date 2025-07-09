@@ -50,14 +50,14 @@ export const validatePhone = (phone) => {
 export const validateForm = (formData) => {
   const errors = {};
   
-  if (!validateRequired(formData.name)) {
-    errors.name = 'Name is required';
+  if (!validateRequired(formData.user_name)) {
+    errors.user_name = 'Name is required';
   }
   
-  if (!validateRequired(formData.email)) {
-    errors.email = 'Email is required';
-  } else if (!validateEmail(formData.email)) {
-    errors.email = 'Please enter a valid email address';
+  if (!validateRequired(formData.user_email)) {
+    errors.user_email = 'Email is required';
+  } else if (!validateEmail(formData.user_email)) {
+    errors.user_email = 'Please enter a valid email address';
   }
   
   if (!validateRequired(formData.message)) {

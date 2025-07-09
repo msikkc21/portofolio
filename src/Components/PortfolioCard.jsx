@@ -1,6 +1,8 @@
 import React from "react";
 
 const PortfolioCard = (props) => {
+  // isOnline prop will determine if the project is online or not
+  const isOnline = props.isOnline !== false; // Default to true if not specified
   return (
     <div className="portfolio-card bg-white dark:bg-[#001E43] rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-[1.02] flex flex-col h-full min-h-[500px]">
       <div className="portfolio-image relative group overflow-hidden aspect-video w-full">
@@ -13,15 +15,21 @@ const PortfolioCard = (props) => {
           <div className="w-full h-full flex flex-col justify-center items-center">
             <h3 className="text-white text-xl font-bold mb-4 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-[50ms] text-center px-4">{props.title}</h3>
             <a 
-              href={props.url} 
+              href={isOnline ? props.url : undefined} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-2.5 bg-[#007BFF] text-white text-sm font-medium rounded-md hover:bg-[#0062CC] transition-all duration-500 ease-out hover:shadow-lg transform opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 delay-[150ms] hover:scale-105 hover:shadow-blue-500/30 min-w-[140px]"
+              className={`inline-flex items-center justify-center px-6 py-2.5 ${isOnline ? 'bg-[#007BFF] hover:bg-[#0062CC] hover:shadow-lg hover:scale-105 hover:shadow-blue-500/30' : 'bg-gray-400 cursor-not-allowed'} text-white text-sm font-medium rounded-md transition-all duration-500 ease-out transform opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 delay-[150ms] min-w-[140px]`}
+              onClick={isOnline ? undefined : (e) => e.preventDefault()}
             >
-              <span className="transform transition-transform duration-500 ease-in-out relative">View Project</span>
-              <svg className="w-4 h-4 ml-1 transition-all duration-500 ease-in-out transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
+              <div className={`w-2 h-2 rounded-full mr-2 ${isOnline ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></div>
+              <span className="transform transition-transform duration-500 ease-in-out relative">
+                {isOnline ? "View Project" : "Offline"}
+              </span>
+              {isOnline && (
+                <svg className="w-4 h-4 ml-1 transition-all duration-500 ease-in-out transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              )}
             </a>
           </div>
         </div>
@@ -64,17 +72,25 @@ const PortfolioCard = (props) => {
       
       <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#001A3A] flex justify-between items-center transition-all duration-300 group-hover:bg-gray-100 dark:group-hover:bg-[#00142E] mt-auto">
         <a 
-          href={props.url} 
+          href={isOnline ? props.url : undefined} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-[#007BFF] dark:text-[#66B2FF] hover:text-[#0062CC] dark:hover:text-white text-sm font-medium transition-colors duration-300 flex items-center hover:scale-105"
+          className={`flex items-center ${isOnline ? 'text-[#007BFF] dark:text-[#66B2FF] hover:text-[#0062CC] dark:hover:text-white hover:scale-105' : 'text-gray-400 dark:text-gray-500 cursor-not-allowed'} text-sm font-medium transition-colors duration-300`}
           style={{transitionTimingFunction: 'cubic-bezier(0.34, 0.7, 0.34, 1)'}}
+          onClick={isOnline ? undefined : (e) => e.preventDefault()}
         >
-          <svg className="w-4 h-4 mr-1 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-          </svg>
-          <span>Demo</span>
+          <div className={`w-2 h-2 rounded-full mr-2 ${isOnline ? 'bg-green-500' : 'bg-red-500'} ${isOnline ? 'animate-pulse' : ''}`}></div>
+          {isOnline ? (
+            <>
+              <svg className="w-4 h-4 mr-1 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+              <span>View</span>
+            </>
+          ) : (
+            <span>Offline</span>
+          )}
         </a>
         <a 
           href={props.sourceCode || "#"} 

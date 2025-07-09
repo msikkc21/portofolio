@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { validateForm } from "../utils/formValidation";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    user_name: "",
+    user_email: "",
     message: ""
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,19 +40,30 @@ const Contact = () => {
     // If no errors, submit the form
     if (Object.keys(validationErrors).length === 0) {
       setIsSubmitting(true);
+      setSubmitError("");
       
-      // Simulate API call
-      setTimeout(() => {
-        console.log("Form submitted:", formData);
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        setFormData({ name: "", email: "", message: "" });
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setSubmitSuccess(false);
-        }, 5000);
-      }, 1500);
+      // EmailJS configuration - replace with your own service ID, template ID and public key
+      const serviceId = 'service_subs0nh';
+      const templateId = 'template_a72m5mg';
+      const publicKey = '_GStoqOu4I2hUdChk';
+      
+      emailjs.sendForm(serviceId, templateId, form.current, publicKey)
+        .then((result) => {
+          console.log('Email sent successfully:', result.text);
+          setIsSubmitting(false);
+          setSubmitSuccess(true);
+          setFormData({ user_name: "", user_email: "", message: "" });
+          
+          // Reset success message after 5 seconds
+          setTimeout(() => {
+            setSubmitSuccess(false);
+          }, 5000);
+        })
+        .catch((error) => {
+          console.error('Failed to send email:', error.text);
+          setIsSubmitting(false);
+          setSubmitError("Failed to send message. Please try again later or contact me directly via email.");
+        });
     }
   };
 
@@ -114,19 +128,25 @@ const Contact = () => {
               </div>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                {submitError}
+              </div>
+            )}
+            
+            <form ref={form} onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                 <input 
                   type="text" 
                   id="name" 
-                  name="name" 
-                  value={formData.name}
+                  name="user_name" 
+                  value={formData.user_name}
                   onChange={handleChange}
-                  className={`mt-1 block w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white`}
+                  className={`mt-1 block w-full px-3 py-2 border ${errors.user_name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white`}
                 />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                {errors.user_name && (
+                  <p className="mt-1 text-sm text-red-600">{errors.user_name}</p>
                 )}
               </div>
               
@@ -135,13 +155,13 @@ const Contact = () => {
                 <input 
                   type="email" 
                   id="email" 
-                  name="email" 
-                  value={formData.email}
+                  name="user_email" 
+                  value={formData.user_email}
                   onChange={handleChange}
-                  className={`mt-1 block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white`}
+                  className={`mt-1 block w-full px-3 py-2 border ${errors.user_email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white`}
                 />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                {errors.user_email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.user_email}</p>
                 )}
               </div>
               

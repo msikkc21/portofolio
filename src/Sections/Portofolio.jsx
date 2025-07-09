@@ -37,6 +37,7 @@ const Portfolio = () => {
                 tech={item.tech}
                 year={item.year}
                 role={item.role}
+                isOnline={item.url !== "#"}
               />
             </div>
           ))}
@@ -66,47 +67,47 @@ export default Portfolio;
 const portfolioData = [
   {
     id: 1,
-    title: "MahaBisa - Student Freelance Platform",
-    img: "assets/logo_light.svg",
+    title: "MahaBisa | Student Freelance Platform",
+    img: "assets/portfolio/mahabisa.png",
     alt: "MahaBisa Platform",
     url: "#",
     sourceCode: "https://github.com/msikkc21/mahabisa",
     desc: "Developed frontend interfaces using React and Tailwind CSS from UI/UX designs. Built dynamic pages including landing page, dashboard, and interactive forms. Collaborated with Laravel backend team for API integration, data management and authentication.",
-    tech: ["React", "TailwindCSS", "Laravel", "API"],
+    tech: ["React", "TailwindCSS", "Laravel"],
     year: "2025",
     role: "Frontend Developer"
   },
   {
     id: 2,
-    title: "Furniture Template – E-commerce Platform",
-    img: "assets/logo_light.svg",
+    title: "Furniture Template | E-commerce Platform",
+    img: "assets/portfolio/template-furniture.png",
     alt: "Furniture E-commerce Template",
     url: "#",
-    sourceCode: "https://github.com/msikkc21/furniture-store",
+    sourceCode: "https://github.com/msikkc21/template-furniture",
     desc: "Built e-commerce interface framework using Next.js and Tailwind CSS with responsive product catalog and navigation. Implemented API integration and server-side rendering optimizations for better performance.",
-    tech: ["Next.js", "TailwindCSS", "API"],
+    tech: ["Next.js", "TailwindCSS"],
     year: "2025",
     role: "Frontend Developer"
   },
   {
     id: 3,
-    title: "Profile Website",
-    img: "assets/logo_light.svg",
-    alt: "Orphanage Profile Website",
-    url: "#",
-    sourceCode: "https://github.com/msikkc21/orphanage-profile",
-    desc: "Created responsive and intuitive website for orphanage profile using Tailwind CSS and Laravel. Developed content management system with efficient database structure for easy information updates and gallery management.",
-    tech: ["Tailwind CSS", "Laravel", "MySQL"],
-    year: "2025",
-    role: "FullStack Developer"
+    title: "InSoft Website",
+    img: "assets/portfolio/insoft.png",
+    alt: "InSoft Website",
+    url: "https://ezwithus.vercel.app",
+    sourceCode: "https://github.com/msikkc21/insoft",
+    desc: "Developed modern company profile website for INSOFT using Next.js and Tailwind CSS. Designed and implemented page structures, content, and responsive user interfaces. Focused on optimal user experience with smooth animations and fast loading times.",
+    tech: ["Next.js", "Tailwind CSS"],
+    year: "2024",
+    role: "Frontend Developer"
   },
   {
     id: 4,
     title: "Personal Portfolio",
-    img: "assets/logo_light.svg",
+    img: "assets/portfolio/portfolio.png",
     alt: "Personal Portfolio",
     url: "https://sulthonulizza.vercel.app",
-    sourceCode: "https://github.com/msikkc21/personal-portfolio",
+    sourceCode: "https://github.com/msikkc21/portofolio",
     desc: "Built a static website with React and TailwindCSS to showcase personal information, skills, and project listings with responsive design and modern UI components.",
     tech: ["React", "TailwindCSS"],
     year: "2024",
@@ -114,8 +115,8 @@ const portfolioData = [
   },
   {
     id: 5,
-    title: "SeconDrive - Used Car Marketplace",
-    img: "assets/logo_light.svg",
+    title: "SeconDrive | Used Car Marketplace",
+    img: "assets/portfolio/secondrive.png",
     alt: "SeconDrive",
     url: "#",
     sourceCode: "https://github.com/msikkc21/secondrive",
@@ -126,26 +127,26 @@ const portfolioData = [
   },
   {
     id: 6,
-    title: "I-Secret UNNES Website",
-    img: "assets/isecret.png",
-    alt: "I-Secret UNNES Website",
-    url: "#",
-    sourceCode: "https://github.com/msikkc21/isecret-web",
-    desc: "Implemented UI/UX designs into dynamic web components using React and Tailwind CSS. Built responsive and modular layouts based on Figma prototypes, collaborating with backend and design teams.",
-    tech: ["React", "Tailwind CSS", "Figma"],
-    year: "2024",
-    role: "Frontend Developer"
-  },
-  {
-    id: 7,
-    title: "AutoPredict - Car Purchase Prediction",
-    img: "assets/logo_light.svg",
+    title: "AutoPredict | Car Purchase Prediction",
+    img: "assets/portfolio/autopredict.png",
     alt: "AutoPredict",
     url: "#",
-    sourceCode: "https://github.com/msikkc21/auto-predict",
+    sourceCode: "https://github.com/msikkc21/car-purchase-decision",
     desc: "Built car purchase prediction application with Python Flask and Bootstrap. Created HTML input forms for sending data to machine learning model (Random Forest) and managed complete flow from interface to prediction output.",
     tech: ["Python", "Flask", "Bootstrap", "Random Forest"],
     year: "2024", 
     role: "FullStack Developer"
   }
+  // {
+  //   id: 7,
+  //   title: "Panti Asuhan Profile Website",
+  //   img: "assets/logo_light.svg",
+  //   alt: "Panti Asuhan Profile Website",
+  //   url: "#",
+  //   sourceCode: "https://github.com/msikkc21/orphanage-profile",
+  //   desc: "Created responsive and intuitive website for orphanage profile using Tailwind CSS and Laravel. Developed content management system with efficient database structure for easy information updates and gallery management.",
+  //   tech: ["Tailwind CSS", "Laravel", "MySQL"],
+  //   year: "2025",
+  //   role: "FullStack Developer"
+  // }
 ];

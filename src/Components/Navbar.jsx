@@ -45,7 +45,7 @@ const Navbar = () => {
     { href: "#about", text: "About" },
     { href: "#portfolio", text: "Portfolio" },
     { href: "#skills", text: "Skills" },
-    { href: "#certificates", text: "Certificates" },
+    // { href: "#certificates", text: "Certificates" },
     { href: "#contact", text: "Contact" }
   ];
 
@@ -127,7 +127,7 @@ const Navbar = () => {
               <a 
                 key={index}
                 href={item.href} 
-                className="block px-6 py-4 text-gray-200 hover:text-white hover:bg-[#002a5c] transition-colors duration-200 font-medium text-lg"
+                className="block px-6 py-4 text-black hover:bg-gray-200 dark:text-gray-200 dark:hover:text-white dark:hover:bg-[#002a5c] transition-colors duration-200 font-medium text-lg"
                 onClick={() => setIsOpen(false)}
               >
                 {item.text}
