@@ -34,7 +34,7 @@ function App() {
       {/* Navbar End */}
       
       {/* Spacer to prevent content from being hidden under fixed navbar */}
-      <div className="h-20"></div>
+      <div className="h-16"></div>
       
       {/* Hero Section Start */}
       <div className='bg-gradient-to-r from-[#0062CC] to-[#007BFF] dark:from-[#001E43] dark:to-[#003366] transition-all duration-700 ease-in-out'>
