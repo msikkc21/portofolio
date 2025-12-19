@@ -16,13 +16,13 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    
+
     // Add event listener
     window.addEventListener("scroll", handleScroll);
-    
+
     // Call once to set initial state
     handleScroll();
-    
+
     // Remove event listener on cleanup
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -40,7 +40,7 @@ const Navbar = () => {
   const toggleDarkMode = () => {
     setDarkMode(darkMode === "light" ? "dark" : "light");
   };
-  
+
   const navItems = [
     { href: "#about", text: "About" },
     { href: "#portfolio", text: "Portfolio" },
@@ -54,10 +54,10 @@ const Navbar = () => {
       <nav className={`navbar flex items-center justify-between relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${scrolled ? 'py-2' : 'py-4'} z-50`}>
         <div className="flex items-center">
           <a href="#home" className="flex items-center">
-            <img 
+            <img
               src={darkMode === "dark" ? "assets/logo_dark.png" : "assets/logo_light.png"}
-              alt="Logo" 
-              className="w-10 h-10 rounded-full transition-opacity duration-200" 
+              alt="Logo"
+              className="w-10 h-10 rounded-full transition-opacity duration-200"
             />
           </a>
         </div>
@@ -65,9 +65,9 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item, index) => (
-            <a 
+            <a
               key={index}
-              href={item.href} 
+              href={item.href}
               className="text-gray-800 dark:text-gray-200 hover:text-[#007BFF] dark:hover:text-[#007BFF] font-medium transition-colors duration-200 relative nav-link"
             >
               {item.text}
@@ -77,8 +77,8 @@ const Navbar = () => {
 
         {/* Dark Mode Toggle */}
         <div className="flex items-center space-x-6">
-          <button 
-            onClick={toggleDarkMode} 
+          <button
+            onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
             aria-label="Toggle dark mode"
           >
@@ -115,18 +115,17 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       <div
-        className={`fixed inset-0 z-40 transform transition-all duration-200 ease-in-out ${
-          isOpen 
-            ? 'translate-x-0 opacity-100' 
-            : 'translate-x-full opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-40 transform transition-all duration-200 ease-in-out ${isOpen
+          ? 'translate-x-0 opacity-100'
+          : 'translate-x-full opacity-0 pointer-events-none'
+          }`}
       >
         <div className="absolute inset-0" onClick={() => setIsOpen(false)}>
           <div className={`flex flex-col flex-grow bg-white/80 dark:bg-[#051630]/80 backdrop-blur-md ${scrolled ? 'mt-14' : 'mt-16'} shadow-sm border-l border-gray-800`}>
             {navItems.map((item, index) => (
-              <a 
+              <a
                 key={index}
-                href={item.href} 
+                href={item.href}
                 className="block px-6 py-4 text-black hover:bg-gray-200 dark:text-gray-200 dark:hover:text-white dark:hover:bg-[#002a5c] transition-colors duration-200 font-medium text-lg"
                 onClick={() => setIsOpen(false)}
               >

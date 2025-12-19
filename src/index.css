@@ -4,7 +4,8 @@
 @tailwind utilities;
 
 /* Mencegah horizontal scrolling */
-html, body {
+html,
+body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
@@ -43,7 +44,9 @@ html.dark {
 }
 
 /* Fix untuk overflow pada elemen dengan konten yang panjang */
-img, svg, video {
+img,
+svg,
+video {
   max-width: 100%;
   height: auto;
 }
@@ -61,6 +64,7 @@ img, svg, video {
     opacity: 0;
     transform: scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -72,6 +76,7 @@ img, svg, video {
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -83,6 +88,7 @@ img, svg, video {
     opacity: 0;
     transform: translateY(20px) scale(0.98);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -94,6 +100,7 @@ img, svg, video {
     opacity: 0;
     transform: translateY(15px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -104,34 +111,44 @@ img, svg, video {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.1);
   }
 }
 
 @keyframes arrowBounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(6px);
   }
 }
 
 @keyframes downloadBounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(4px);
   }
 }
 
 @keyframes buttonPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 10px 15px -3px rgba(0, 123, 255, 0.2), 0 4px 6px -2px rgba(0, 123, 255, 0.1);
     transform: scale(1);
   }
+
   50% {
     box-shadow: 0 15px 25px -5px rgba(0, 123, 255, 0.3), 0 10px 10px -5px rgba(0, 123, 255, 0.2);
     transform: scale(1.02);
@@ -349,7 +366,7 @@ span.inline-block.px-3.py-1.rounded-full:hover::before {
   .hero-cv-btn {
     box-shadow: 0 10px 15px -3px rgba(0, 102, 221, 0.3), 0 4px 6px -2px rgba(0, 102, 221, 0.2);
   }
-  
+
   .hero-cv-btn:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 102, 221, 0.5), 0 10px 10px -5px rgba(0, 102, 221, 0.4);
   }
@@ -373,50 +390,54 @@ html.light .hero-cv-btn:hover {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Untuk menambahkan padding saat scroll ke elemen dengan ID agar tidak tertutup navbar */
+  scroll-padding-top: 80px;
+  /* Untuk menambahkan padding saat scroll ke elemen dengan ID agar tidak tertutup navbar */
 }
 
 /* Mobile responsive adjustments */
 @media (max-width: 480px) {
-  .hero-cv-btn, .hero-contact-btn, .hero-portfolio-btn {
+
+  .hero-cv-btn,
+  .hero-contact-btn,
+  .hero-portfolio-btn {
     width: 100%;
     justify-content: center;
     padding: 0.625rem 0.875rem;
     font-size: 0.9375rem;
   }
-  
+
   /* More compact layout on small phones */
   section#home {
     padding-top: 0.5rem;
     min-height: 82vh;
   }
-  
+
   section#home .grid {
     gap: 0.5rem;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
-  
+
   section#home h1 {
     font-size: 1.875rem;
     line-height: 1.2;
   }
-  
+
   section#home p {
     font-size: 0.875rem;
   }
-  
+
   /* Stack buttons vertically on very small screens */
   @media (max-width: 370px) {
     section#home .grid-cols-1 {
       grid-row-gap: 0.375rem;
     }
-    
+
     section#home .space-y-2 {
       margin-bottom: 0.5rem;
     }
   }
-  
+
   /* Center content on mobile */
   section#home .space-y-2 {
     text-align: center;
@@ -425,16 +446,139 @@ html {
 
 /* Improve touch targets for mobile */
 @media (hover: none) {
-  .hero-cv-btn, .hero-contact-btn, .hero-portfolio-btn {
+
+  .hero-cv-btn,
+  .hero-contact-btn,
+  .hero-portfolio-btn {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     min-height: 3rem;
   }
-  
+
   section#home a[target="_blank"] {
     padding: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+}
+
+/* Scroll Animations */
+@keyframes scrollFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Base state for scroll animations - hidden by default */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* When element is visible */
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered delays for child elements */
+.scroll-animate.delay-100 {
+  transition-delay: 0.1s;
+}
+
+.scroll-animate.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.scroll-animate.delay-300 {
+  transition-delay: 0.3s;
+}
+
+.scroll-animate.delay-400 {
+  transition-delay: 0.4s;
+}
+
+.scroll-animate.delay-500 {
+  transition-delay: 0.5s;
 }

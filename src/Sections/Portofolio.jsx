@@ -1,25 +1,36 @@
 import React from "react";
 import PortfolioCard from "../Components/PortfolioCard";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const Portfolio = () => {
+  const [headingRef, headingVisible] = useScrollAnimation({ threshold: 0.2 });
+  const [gridRef, gridVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [buttonRef, buttonVisible] = useScrollAnimation({ threshold: 0.2 });
+
   return (
     <section id="portfolio" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 bg-white/90 dark:bg-[#001E43]/80 py-8 px-4 rounded-xl shadow-lg transform transition-all duration-700 hover:shadow-xl">
+        <div
+          ref={headingRef}
+          className={`text-center mb-16 bg-white/90 dark:bg-[#001E43]/80 py-8 px-4 rounded-xl shadow-lg transform transition-all duration-700 hover:shadow-xl scroll-animate ${headingVisible ? 'is-visible' : ''}`}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white drop-shadow-sm">My Projects</h2>
           <div className="w-24 h-1 bg-[#007BFF] mx-auto mt-4 shadow-sm transition-all duration-500 ease-in-out hover:w-32"></div>
           <p className="mt-6 text-gray-800 dark:text-white max-w-3xl mx-auto font-medium">
-            A collection of my projects that demonstrate my skills in creating responsive, 
+            A collection of my projects that demonstrate my skills in creating responsive,
             user-friendly web applications with clean code and attention to detail.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+
+        <div
+          ref={gridRef}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr scroll-animate ${gridVisible ? 'is-visible' : ''}`}
+        >
           {portfolioData.map((item, index) => (
-            <div 
-              key={item.id} 
-              className="transform transition-all duration-700 ease-in-out h-full" 
-              style={{ 
+            <div
+              key={item.id}
+              className="transform transition-all duration-700 ease-in-out h-full"
+              style={{
                 animationDelay: `${index * 150}ms`,
                 animationFillMode: 'both',
                 animation: 'fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
@@ -42,11 +53,14 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
-        
-        <div className="text-center mt-16">
-          <a 
-            href="https://github.com/msikkc21" 
-            target="_blank" 
+
+        <div
+          ref={buttonRef}
+          className={`text-center mt-16 scroll-animate ${buttonVisible ? 'is-visible' : ''}`}
+        >
+          <a
+            href="https://github.com/msikkc21"
+            target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center px-8 py-3 bg-[#007BFF] hover:bg-[#0062CC] text-white font-bold rounded-lg transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-lg hover:shadow-blue-500/30 border-2 border-[#007BFF] transform hover:scale-105 hover:-translate-y-1 overflow-hidden relative"
           >
@@ -134,7 +148,7 @@ const portfolioData = [
     sourceCode: "https://github.com/msikkc21/car-purchase-decision",
     desc: "Built car purchase prediction application with Python Flask and Bootstrap. Created HTML input forms for sending data to machine learning model (Random Forest) and managed complete flow from interface to prediction output.",
     tech: ["Python", "Flask", "Bootstrap", "Random Forest"],
-    year: "2024", 
+    year: "2024",
     role: "FullStack Developer"
   }
   // {

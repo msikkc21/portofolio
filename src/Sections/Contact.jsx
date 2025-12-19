@@ -1,9 +1,13 @@
 import React, { useState, useRef } from "react";
 import { validateForm } from "../utils/formValidation";
 import emailjs from '@emailjs/browser';
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const Contact = () => {
   const form = useRef();
+  const [headingRef, headingVisible] = useScrollAnimation({ threshold: 0.2 });
+  const [cardRef, cardVisible] = useScrollAnimation({ threshold: 0.1 });
+
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -20,7 +24,7 @@ const Contact = () => {
       ...prevData,
       [name]: value
     }));
-    
+
     // Clear error for this field when typing
     if (errors[name]) {
       setErrors(prev => ({
@@ -32,28 +36,28 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Validate form
     const validationErrors = validateForm(formData);
     setErrors(validationErrors);
-    
+
     // If no errors, submit the form
     if (Object.keys(validationErrors).length === 0) {
       setIsSubmitting(true);
       setSubmitError("");
-      
+
       // EmailJS configuration - replace with your own service ID, template ID and public key
       const serviceId = 'service_subs0nh';
       const templateId = 'template_a72m5mg';
       const publicKey = '_GStoqOu4I2hUdChk';
-      
+
       emailjs.sendForm(serviceId, templateId, form.current, publicKey)
         .then((result) => {
           console.log('Email sent successfully:', result.text);
           setIsSubmitting(false);
           setSubmitSuccess(true);
           setFormData({ user_name: "", user_email: "", message: "" });
-          
+
           // Reset success message after 5 seconds
           setTimeout(() => {
             setSubmitSuccess(false);
@@ -69,14 +73,22 @@ const Contact = () => {
 
   return (
     <section id="contact" className="px-5 py-16 container">
-      <h1 className="text-center text-4xl font-bold mb-10">Contact Me</h1>
-      
-      <div className="max-w-3xl mx-auto bg-white dark:bg-[#001A3A] rounded-xl shadow-lg overflow-hidden">
+      <h1
+        ref={headingRef}
+        className={`text-center text-4xl font-bold mb-10 scroll-animate ${headingVisible ? 'is-visible' : ''}`}
+      >
+        Contact Me
+      </h1>
+
+      <div
+        ref={cardRef}
+        className={`max-w-3xl mx-auto bg-white dark:bg-[#001A3A] rounded-xl shadow-lg overflow-hidden scroll-animate ${cardVisible ? 'is-visible' : ''}`}
+      >
         <div className="md:flex">
           <div className="md:w-1/2 bg-blue-600 p-8 text-white">
             <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
             <p className="mb-6">I'm always open to discuss your project and answer any question you may have.</p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -98,7 +110,7 @@ const Contact = () => {
                 <span>Semarang, Indonesia</span>
               </div>
             </div>
-            
+
             <div className="mt-8">
               <h3 className="text-xl font-semibold mb-4">Find me on</h3>
               <div className="flex space-x-4">
@@ -120,27 +132,27 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="md:w-1/2 p-8">
             {submitSuccess && (
               <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
                 Thank you for your message! I'll get back to you soon.
               </div>
             )}
-            
+
             {submitError && (
               <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
                 {submitError}
               </div>
             )}
-            
+
             <form ref={form} onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="user_name" 
+                <input
+                  type="text"
+                  id="name"
+                  name="user_name"
                   value={formData.user_name}
                   onChange={handleChange}
                   className={`mt-1 block w-full px-3 py-2 border ${errors.user_name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white`}
@@ -149,13 +161,13 @@ const Contact = () => {
                   <p className="mt-1 text-sm text-red-600">{errors.user_name}</p>
                 )}
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="user_email" 
+                <input
+                  type="email"
+                  id="email"
+                  name="user_email"
                   value={formData.user_email}
                   onChange={handleChange}
                   className={`mt-1 block w-full px-3 py-2 border ${errors.user_email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white`}
@@ -164,13 +176,13 @@ const Contact = () => {
                   <p className="mt-1 text-sm text-red-600">{errors.user_email}</p>
                 )}
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  rows="5" 
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
                   value={formData.message}
                   onChange={handleChange}
                   className={`mt-1 block w-full px-3 py-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white`}
@@ -179,9 +191,9 @@ const Contact = () => {
                   <p className="mt-1 text-sm text-red-600">{errors.message}</p>
                 )}
               </div>
-              
+
               <div>
-                <button 
+                <button
                   type="submit"
                   disabled={isSubmitting}
                   className={`w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
