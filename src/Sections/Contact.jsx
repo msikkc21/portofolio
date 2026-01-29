@@ -133,7 +133,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="md:w-1/2 p-8">
+          <div className="md:w-1/2 p-8 bg-white dark:bg-[#001E43]">
             {submitSuccess && (
               <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
                 Thank you for your message! I'll get back to you soon.

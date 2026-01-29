@@ -10,6 +10,7 @@ import Skills from './Sections/Skills'
 import Certificates from './Sections/Certificates'
 import Contact from './Sections/Contact'
 import Footer from './Sections/Footer'
+import VantaBackground from './Components/VantaBackground'
 
 function App() {
   // Tambahkan class dark ke html saat pertama kali load (memastikan dark mode default)
@@ -58,9 +59,13 @@ function App() {
 
       {/* Hero Section Start */}
       <div className='bg-gradient-to-r from-[#0062CC] to-[#007BFF] dark:from-[#001E43] dark:to-[#003366] transition-all duration-700 ease-in-out'>
+        {/* Vanta.js Animated Background */}
         <div className="relative">
+          <VantaBackground />
           <div className="absolute inset-0 bg-white/10 dark:bg-black/10 transition-all duration-700 ease-in-out"></div>
-          <Hero id='home' />
+          <div className="relative z-10">
+            <Hero id='home' />
+          </div>
         </div>
       </div>
       {/* Hero Section End */}
